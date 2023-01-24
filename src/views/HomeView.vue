@@ -19,20 +19,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import TestComponent from "@/components/TestComponent.vue";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { defineComponent } from 'vue';
+import TestComponent from '@/components/TestComponent.vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default defineComponent({
-  name: "HomeView",
+  name: 'HomeView',
   components: {
     TestComponent,
   },
   mounted() {
-    const triggers: any[] = gsap.utils.toArray(".trigger"); //document.querySelectorAll(".blank");
-    const animations: any[] = gsap.utils.toArray(".animation"); //document.querySelectorAll(".animation");
+    const triggers: any[] = gsap.utils.toArray('.trigger'); //document.querySelectorAll(".blank");
+    const animations: any[] = gsap.utils.toArray('.animation'); //document.querySelectorAll(".animation");
     for (const i in triggers) {
       gsap.set(animations[i], {
         x: window.outerWidth * (Number(i) % 2 ? 1 : -1),
@@ -47,10 +47,10 @@ export default defineComponent({
         rotation: 0,
         duration: 1,
         scrollTrigger: {
-          trigger: triggers[i], //アニメーションが始まるトリガーとなる要素
-          start: "top center", //アニメーションが始まる位置
-          end: "bottom center",
-          toggleActions: "play reverse play reverse",
+          trigger: triggers[i],
+          start: 'top center',
+          end: 'bottom center',
+          toggleActions: 'play reverse play reverse',
           // scrub: true,
           markers: true,
         },
@@ -60,14 +60,16 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
+@use '@/constants/constants.scss';
 body {
-  background-color: magenta;
+  background-color: #cccccc;
 }
 .animation {
   position: fixed;
-  top: calc(50% - 100% / 2);
+  top: calc(50% - 100% / 2 + constants.$HEADER_HEIGHT);
   left: calc(50% - 100% / 2);
+  margin: 0;
 }
 .trigger {
   margin: 0;

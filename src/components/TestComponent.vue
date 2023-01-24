@@ -11,10 +11,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "TestComponent",
+  name: 'TestComponent',
   props: {
     msg: String,
   },
@@ -25,8 +25,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" module>
+@use '@/constants/constants.scss';
 #parent {
-  height: 100%;
+  height: calc(100% - constants.$HEADER_HEIGHT);
   width: 100%;
   background-color: lime;
 }
