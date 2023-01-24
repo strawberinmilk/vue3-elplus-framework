@@ -31,8 +31,8 @@ export default defineComponent({
     TestComponent,
   },
   mounted() {
-    const triggers: any[] = gsap.utils.toArray('.trigger'); //document.querySelectorAll(".blank");
-    const animations: any[] = gsap.utils.toArray('.animation'); //document.querySelectorAll(".animation");
+    const triggers: any[] = gsap.utils.toArray('.trigger'); // eslint-disable-line
+    const animations: any[] = gsap.utils.toArray('.animation'); // eslint-disable-line
     for (const i in triggers) {
       gsap.set(animations[i], {
         x: window.outerWidth * (Number(i) % 2 ? 1 : -1),
@@ -67,8 +67,8 @@ body {
 }
 .animation {
   position: fixed;
-  top: calc(50% - 100% / 2 + constants.$HEADER_HEIGHT);
-  left: calc(50% - 100% / 2);
+  top: calc(constants.$HEADER_HEIGHT + constants.$PROGRESS_HEIGHT);
+  left: 0;
   margin: 0;
 }
 .trigger {

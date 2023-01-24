@@ -18,8 +18,35 @@
     </template>
   </el-page-header>
   <div :id="$style.headerHeightKeep"></div>
+  <div id="progressAppGsap" :class="$style.progress"></div>
   <router-view />
 </template>
+
+<script>
+import { defineComponent } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+export default defineComponent({
+  name: 'App',
+  mounted() {
+    gsap.set('#progressAppGsap', {
+      width: '0%',
+    });
+    gsap.to('#progressAppGsap', {
+      width: '100%',
+      scrollTrigger: {
+        start: 'top top',
+        end: 'bottom center',
+        toggleActions: 'play reverse play reverse',
+        scrub: true,
+        markers: true,
+      },
+    });
+  },
+});
+</script>
 
 <style lang="scss" module>
 @use '@/constants/constants.scss';
@@ -46,5 +73,12 @@
 }
 #headerHeightKeep {
   height: constants.$HEADER_HEIGHT;
+}
+
+.progress {
+  position: fixed;
+  top: constants.$HEADER_HEIGHT;
+  height: 10px;
+  background-color: #ffffff;
 }
 </style>

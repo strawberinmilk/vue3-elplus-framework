@@ -27,7 +27,7 @@ export default defineComponent({
 <style lang="scss" module>
 @use '@/constants/constants.scss';
 #parent {
-  height: calc(100% - constants.$HEADER_HEIGHT);
+  height: calc(100% - constants.$HEADER_HEIGHT - constants.$PROGRESS_HEIGHT);
   width: 100%;
   background-color: lime;
 }
