@@ -22,3 +22,20 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+`yarn add element-plus`
+
+main.ts add
+```
+import ElementPlus from 'element-plus';
+@/../node_modules/element-plus/dist/index.css
+
+createApp(App).use(ElementPlus)
+```
+
+必要なページに下記を記載
+```
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+```

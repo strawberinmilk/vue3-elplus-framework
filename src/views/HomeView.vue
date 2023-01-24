@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import TestComponent from "@/components/TestComponent.vue"; // @ is an alias to /src
+import TestComponent from "@/components/TestComponent.vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -35,10 +35,10 @@ export default defineComponent({
     const animations: any[] = gsap.utils.toArray(".animation"); //document.querySelectorAll(".animation");
     for (const i in triggers) {
       gsap.set(animations[i], {
-        x: 1000,
-        y: -100,
+        x: window.outerWidth * (Number(i) % 2 ? 1 : -1),
+        y: 0,
         opacity: 1,
-        rotate: -60,
+        rotate: -90,
       });
       gsap.to(animations[i], {
         x: 0,
@@ -66,10 +66,11 @@ body {
 }
 .animation {
   position: fixed;
-  top: calc(50% - 100px / 2);
-  left: calc(50% - 300px / 2);
+  top: calc(50% - 100% / 2);
+  left: calc(50% - 100% / 2);
 }
 .trigger {
-  height: 200px;
+  margin: 0;
+  height: 500px;
 }
 </style>
